@@ -1,19 +1,32 @@
 function computerPlay(){    /* randomly returns rock, paper, or scissors */
     let computerPick = Math.floor(Math.random()* 3) +1;
     if (computerPick==1) {
-        return "Rock";
+        return "rock";
     }
     else if (computerPick==2) {
-        return "Paper";
+        return "paper";
     }
     else if (computerPick==3) {
-        return "Scissors";
+        return "scissors";
     }
 }
-    alert(computerPlay());
-    
-    
-    
+
+let playerSelect = prompt("Rock, Paper, or Scissors?").toLowerCase(); /* ask user for their selection */
+let computerSelect = computerPlay();
+
+alert(playerSelect + " " + computerSelect); /* test line */
+alert(playRound(playerSelect, computerSelect));
+
+function playRound(playerSelect, computerSelect) {
+    if (playerSelect == "rock") {
+        return "You picked rock!";
+    }
+    else {
+        return "You didn't pick rock!";
+    }
+}
+
+
 
 
 /* play single round using 2 inputs:  playerselection, computerselection
