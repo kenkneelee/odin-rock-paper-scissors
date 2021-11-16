@@ -17,51 +17,55 @@ let computerSelect = computerPlay();
 alert(playerSelect + " " + computerSelect); /* test line */
 alert(playRound(playerSelect, computerSelect));
 
+/* play single round using 2 inputs:  playerselection, computerselection
+returns string in format "You lose! Paper beats Rock"
+case insensitive */
+
 function playRound(playerSelect, computerSelect) {
+
     if (playerSelect == "rock") {
         if (computerSelect == "rock") {
-            return "Tie game!"
+            return "Tie game!";
         }
         else if (computerSelect == "paper") {
-            return "You lose."
+            return "You lose. " + capitalize(computerSelect) + " beats " + playerSelect + ".";
         }
         else if (computerSelect == "scissors") {
-            return "You win!"
+            return "You win! " + capitalize(playerSelect) + " beats " + computerSelect + ".";
         }
     }
     else if (playerSelect== "paper") {
         if (computerSelect == "rock") {
-            return "You win!"
+            return "You win! "  + capitalize(playerSelect) + " beats " + computerSelect + ".";
         }
         else if (computerSelect == "paper") {
-            return "Tie game!"
+            return "Tie game!";
         }
         else if (computerSelect == "scissors") {
-            return "You lose."
+            return "You lose. "  + capitalize(computerSelect) + " beats " + playerSelect + ".";
         }
     }
     else if (playerSelect=="scissors"){
         if (computerSelect == "rock") {
-            return "You lose."
+            return "You lose. "  + capitalize(computerSelect) + " beats " + playerSelect + ".";
         }
         else if (computerSelect == "paper") {
-            return "You win!"
+            return "You win! "  + capitalize(playerSelect) + " beats " + computerSelect + ".";
         }
         else if (computerSelect == "scissors") {
-            return "Tie game!"
+            return "Tie game!";
         }
     }
     else {
-        return "Invalid option!"
+        return "Invalid option!";
     }
 }
 
+function capitalize(string) {
+    return string[0].toUpperCase()+ string.slice(1);
+}
 
 
-
-/* play single round using 2 inputs:  playerselection, computerselection
-returns string in format "You lose! Paper beats Rock"
-case insensitive */
 
 /* new function using previous function inside it to run 5 round game, keep score, return winner at end */
 
