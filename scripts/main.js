@@ -1,12 +1,12 @@
-function computerPlay(){    /* randomly returns rock, paper, or scissors */
-    let computerPick = Math.floor(Math.random()* 3) +1;
-    if (computerPick==1) {
+function computerPlay() {    /* randomly returns rock, paper, or scissors */
+    let computerPick = Math.floor(Math.random() * 3) + 1;
+    if (computerPick == 1) {
         return "rock";
     }
-    else if (computerPick==2) {
+    else if (computerPick == 2) {
         return "paper";
     }
-    else if (computerPick==3) {
+    else if (computerPick == 3) {
         return "scissors";
     }
 }
@@ -19,10 +19,40 @@ alert(playRound(playerSelect, computerSelect));
 
 function playRound(playerSelect, computerSelect) {
     if (playerSelect == "rock") {
-        return "You picked rock!";
+        if (computerSelect == "rock") {
+            return "Tie game!"
+        }
+        else if (computerSelect == "paper") {
+            return "You lose."
+        }
+        else if (computerSelect == "scissors") {
+            return "You win!"
+        }
+    }
+    else if (playerSelect== "paper") {
+        if (computerSelect == "rock") {
+            return "You win!"
+        }
+        else if (computerSelect == "paper") {
+            return "Tie game!"
+        }
+        else if (computerSelect == "scissors") {
+            return "You lose."
+        }
+    }
+    else if (playerSelect=="scissors"){
+        if (computerSelect == "rock") {
+            return "You lose."
+        }
+        else if (computerSelect == "paper") {
+            return "You win!"
+        }
+        else if (computerSelect == "scissors") {
+            return "Tie game!"
+        }
     }
     else {
-        return "You didn't pick rock!";
+        return "Invalid option!"
     }
 }
 
