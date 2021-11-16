@@ -1,3 +1,10 @@
+let playerSelect;
+let computerSelect;
+let winCounter = 0;
+
+alert(playRound(playerSelect, computerSelect));
+alert(winCounter + " wins so far.");
+
 function computerPlay() {    /* randomly returns rock, paper, or scissors */
     let computerPick = Math.floor(Math.random() * 3) + 1;
     if (computerPick == 1) {
@@ -10,18 +17,14 @@ function computerPlay() {    /* randomly returns rock, paper, or scissors */
         return "scissors";
     }
 }
-
-let playerSelect = prompt("Rock, Paper, or Scissors?").toLowerCase(); /* ask user for their selection */
-let computerSelect = computerPlay();
-
-alert(playerSelect + " " + computerSelect); /* test line */
-alert(playRound(playerSelect, computerSelect));
-
-/* play single round using 2 inputs:  playerselection, computerselection
+/* function to play single round using 2 inputs:  playerselection, computerselection
 returns string in format "You lose! Paper beats Rock"
 case insensitive */
 
 function playRound(playerSelect, computerSelect) {
+    playerSelect = prompt("Rock, Paper, or Scissors?").toLowerCase(); /* ask user for their selection */
+    computerSelect = computerPlay();
+    alert("You picked " + playerSelect + ". Computer picked " + computerSelect + "."); /* test line */
 
     if (playerSelect == "rock") {
         if (computerSelect == "rock") {
@@ -31,11 +34,13 @@ function playRound(playerSelect, computerSelect) {
             return "You lose. " + capitalize(computerSelect) + " beats " + playerSelect + ".";
         }
         else if (computerSelect == "scissors") {
+            winCounter++;
             return "You win! " + capitalize(playerSelect) + " beats " + computerSelect + ".";
         }
     }
     else if (playerSelect== "paper") {
         if (computerSelect == "rock") {
+            winCounter++;
             return "You win! "  + capitalize(playerSelect) + " beats " + computerSelect + ".";
         }
         else if (computerSelect == "paper") {
@@ -50,6 +55,7 @@ function playRound(playerSelect, computerSelect) {
             return "You lose. "  + capitalize(computerSelect) + " beats " + playerSelect + ".";
         }
         else if (computerSelect == "paper") {
+            winCounter++;
             return "You win! "  + capitalize(playerSelect) + " beats " + computerSelect + ".";
         }
         else if (computerSelect == "scissors") {
@@ -61,15 +67,22 @@ function playRound(playerSelect, computerSelect) {
     }
 }
 
+
+/* new function using previous function inside it to run 5 round game, keep score, return winner at end */
+
+function fullGame() {
+    for (i=0; i<5; i++) {
+    playRound();
+    }
+}
+
+/* function to capitalize first letter in a string */
 function capitalize(string) {
     return string[0].toUpperCase()+ string.slice(1);
 }
 
 
 
-/* new function using previous function inside it to run 5 round game, keep score, return winner at end */
 
 /*use console.log to display results of each round and end winner */
 
-/* use prompt() to get input
- */
