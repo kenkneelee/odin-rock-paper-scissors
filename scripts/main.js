@@ -2,8 +2,7 @@ let playerSelect;
 let computerSelect;
 let winCounter = 0;
 
-alert(playRound(playerSelect, computerSelect));
-alert(winCounter + " wins so far.");
+alert(game());
 
 function computerPlay() {    /* randomly returns rock, paper, or scissors */
     let computerPick = Math.floor(Math.random() * 3) + 1;
@@ -70,9 +69,16 @@ function playRound(playerSelect, computerSelect) {
 
 /* new function using previous function inside it to run 5 round game, keep score, return winner at end */
 
-function fullGame() {
+function game() {
     for (i=0; i<5; i++) {
-    playRound();
+    alert(playRound(playerSelect, computerSelect));
+    alert(winCounter + " wins so far.");
+    }
+    if (winCounter<3) {
+        return "You lost the game."
+    }
+    else {
+        return "You won the game."
     }
 }
 
