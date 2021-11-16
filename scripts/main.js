@@ -1,4 +1,20 @@
-/* randomly returns rock, paper, or scissors */
+function computerPlay(){    /* randomly returns rock, paper, or scissors */
+    let computerPick = Math.floor(Math.random()* 3) +1;
+    if (computerPick==1) {
+        return "Rock";
+    }
+    else if (computerPick==2) {
+        return "Paper";
+    }
+    else if (computerPick==3) {
+        return "Scissors";
+    }
+}
+    alert(computerPlay());
+    
+    
+    
+
 
 /* play single round using 2 inputs:  playerselection, computerselection
 returns string in format "You lose! Paper beats Rock"
