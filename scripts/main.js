@@ -4,7 +4,8 @@ let winCounter = 0;
 
 alert(game());
 
-function computerPlay() {    /* randomly returns rock, paper, or scissors */
+/* randomly returns rock, paper, or scissors */
+function computerPlay() {   
     let computerPick = Math.floor(Math.random() * 3) + 1;
     if (computerPick == 1) {
         return "rock";
