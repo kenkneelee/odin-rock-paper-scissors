@@ -1,27 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fire, Water, Grass</title>
     <link rel="stylesheet" href="styles/style.css">
-
 </head>
 
 <body>
     <div class="main">
-    <h1>Choose your Pokémon!</h1>
-    <div class="container">
-        <div class="ballcontainer">
-            <img src="images/pokeball_closed.png" class="pokeball" alt="pixelated pokeball">
-            <img src="images/pokeball_closed.png" class="pokeball" alt="pixelated pokeball">
-            <img src="images/pokeball_closed.png" class="pokeball" alt="pixelated pokeball">
+        <h1 id="demo"></h1>
+        <div class="container">
+            <div class="ballcontainer">
+                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball" onclick="alert(1)">
+                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball" onclick="alert(2)">
+                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball" onclick="alert(3)">
+            </div>
+            <div class="text">Choose carefully!<br> ...</div>
         </div>
-        <div class = "score">Score:</div>
-    </div>
+        <h2 class="score">Score:</h2>
     </div>
 </body>
 
+<script>
+    var i = 0;
+    var txt = 'Choose your Pokémon!'; /* The text */
+    var speed = 100; /* The speed/duration of the effect in milliseconds */
+    
+    function typeWriter() {
+      if (i < txt.length) {
+        document.getElementById("demo").innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+      }
+      document.onload=typeWriter();</script>
 <!-- <script src="scripts/main.js"></script> -->
 </html>

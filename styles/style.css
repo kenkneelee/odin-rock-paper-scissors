@@ -17,13 +17,49 @@ body, html {
 .main {
     display:flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-evenly;
+    align-items:center;
     height:100%;
     width:auto;
+    background-color: skyblue;
+    background-image: url('../images/background.jpeg');
+    background-size: cover;
 }
 
 .container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height:auto;
+    border: 6px black;
+    border-style: groove;
+    padding:3rem 4rem;
+    background-color: red;
+}
+
+.ballcontainer {
+    background-color: grey;
+    width:100%;
+    height:auto;
+    display:flex;
+    justify-content: space-around;
+    padding: 10% 2rem;
+    border: 5px black solid;
+    
+}
+
+.closedball {
+    width:20%;
+    height:auto;
+}
+
+.text {
+    border: 5px solid black;
+    font-size:2rem;
+    background-color: white;
+    width:100%;
+    height:auto;
+    padding:2rem;
 }
