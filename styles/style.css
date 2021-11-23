@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'Pokemon';
+    src: url('../fonts/PKMN\ RBYGSC.ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body, html {
+    font-family: 'Pokemon';
+    margin:0;
+    padding:0;
+    height:100%;
+    width:100%;
+}
+
+.main {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    width:auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
