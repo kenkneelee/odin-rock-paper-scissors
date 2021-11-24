@@ -14,11 +14,14 @@
         <h1 id="demo"></h1>
         <div class="container">
             <div class="ballcontainer">
-                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball" onclick="alert(1)">
-                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball" onclick="alert(2)">
-                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball" onclick="alert(3)">
+                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball"
+                    onclick="alert(1)">
+                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball"
+                    onclick="alert(2)">
+                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball"
+                    onclick="alert(3)">
             </div>
-            <div class="text">Choose carefully!<br> ...</div>
+            <div id="text"></div>
         </div>
         <h2 class="score">Score:</h2>
     </div>
@@ -26,16 +29,30 @@
 
 <script>
     var i = 0;
+    var j = 0;
     var txt = 'Choose your Pokémon!'; /* The text */
     var speed = 100; /* The speed/duration of the effect in milliseconds */
-    
-    function typeWriter() {
-      if (i < txt.length) {
-        document.getElementById("demo").innerHTML += txt.charAt(i);
-        i++;
-        setTimeout(typeWriter, speed);
-      }
-      }
-      document.onload=typeWriter();</script>
+    var chooseTxt = 'Choose carefully! ...';
+
+    function typeWriterTitle() {
+        if (i < txt.length) {
+            document.getElementById("demo").innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typeWriterTitle, speed);
+        }
+    }
+
+    function typeWriterChoose() {
+        if (j < chooseTxt.length) {
+            document.getElementById("text").innerHTML += chooseTxt.charAt(j);
+            j++;
+            setTimeout(typeWriterChoose, speed);
+        }
+    }
+    document.onload = typeWriterTitle();
+    document.onload = typeWriterChoose();
+
+</script>
 <!-- <script src="scripts/main.js"></script> -->
+
 </html>
