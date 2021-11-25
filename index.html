@@ -89,9 +89,19 @@
 
         input.addEventListener('mouseover', () => {
             input.src = "images/pokeball_open.png"
+            if (input.id=="rock") {
+            document.getElementById('choicepic').src = "images/rock.png";
+            }
+            else if (input.id=="paper") {
+                document.getElementById('choicepic').src = "images/paper.png";
+            }
+            else if (input.id=="scissors") {
+                document.getElementById('choicepic').src = "images/scissors.png";
+            }
         })
         input.addEventListener('mouseout', () => {
             input.src = "images/pokeball_closed.png"
+
         })
             ;
     }
@@ -116,6 +126,9 @@
 
     function playRound(playerSelect, computerSelect) {
         console.log("You picked " + playerSelect + ". Computer picked " + computerSelect + "."); /* test line */
+        document.getElementById('aichoicepic').src = "images/" + computerSelect + ".png";
+        document.getElementById('choicepic').src = "images/" + playerSelect + ".png";
+
 
         if (playerSelect == "rock") {
             if (computerSelect == "rock") {
