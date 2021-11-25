@@ -60,9 +60,15 @@ h1  {
 
 #text {
     border: 5px solid black;
-    font-size:2rem;
+    font-size: 1.5rem;
     background-color: white;
     width:100%;
-    height:auto;
+    height: 6rem;
     padding:2rem;
+}
+
+.scorecontainer {
+    display:flex;
+    justify-content: space-between;
+    width:20%;
 }
