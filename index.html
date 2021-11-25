@@ -12,135 +12,155 @@
 <body>
     <div class="main">
         <h1 id="demo">Choose your Pokémon!</h1>
+
+
         <div class="container">
             <div class="ballcontainer">
-                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball" id="rock"
-                    >
-                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball" id="paper"
-                    >
-                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball" id="scissors"
-                    >
+                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball"
+                    id="rock">
+                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball"
+                    id="paper">
+                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball"
+                    id="scissors">
             </div>
             <div id="text">Choose carefully! <br> ...</div>
         </div>
+
+
         <div class="scorecontainer">
-        <h2 class="scoretext">Score:</h2>
+            <h2 class="scoretext">Score:</h2>
             <h2 id="score">0</h2>
+            <h2 class="aiscoretext">AI Score:</h2>
+            <h2 id="aiscore">0</h2>
         </div>
+        
     </div>
 </body>
 
 <script>
-const inputs = document.querySelectorAll('input');
-const text = document.querySelector('text');
-const score = document.querySelector('score');
+    const inputs = document.querySelectorAll('input');
+    const text = document.querySelector('text');
+    const score = document.querySelector('score');
 
-inputs.forEach((input) => {     //for each button, add event listeners
-    input.addEventListener('click',()=>{
-    document.getElementById('text').textContent=(playRound(input.id, computerPlay()));
-    console.log(winCounter);
-    document.getElementById('score').textContent=winCounter;
-    })
+    let playerSelect;
+    let computerSelect;
+    let winCounter = 0;
+    let loseCounter = 0;
 
 
-    input.addEventListener('mouseover',()=>{
-        input.src="images/pokeball_open.png"
-    })
-    input.addEventListener('mouseout',()=>{
-        input.src="images/pokeball_closed.png"
-    })
-    ;
-}
-);
+    inputs.forEach((input) => {     //for each button, add event listeners
+        input.addEventListener('click', () => {
+            document.getElementById('text').textContent = (playRound(input.id, computerPlay()));
+            document.getElementById('score').textContent = winCounter;
+            document.getElementById('aiscore').textContent = loseCounter;
 
 
+            if (winCounter >= 5) {
+                document.getElementById('text').textContent = "You win the game!";
+            }
 
-let playerSelect;
-let computerSelect;
-let winCounter = 0;
-/* randomly returns rock, paper, or scissors */
-function computerPlay() {   
-    let computerPick = Math.floor(Math.random() * 3) + 1;
-    if (computerPick == 1) {
-        return "rock";
+            if (loseCounter >= 5) {
+                document.getElementById('text').textContent = "You lose the game.";
+            }
+        })
+
+
+        input.addEventListener('mouseover', () => {
+            input.src = "images/pokeball_open.png"
+        })
+        input.addEventListener('mouseout', () => {
+            input.src = "images/pokeball_closed.png"
+        })
+            ;
     }
-    else if (computerPick == 2) {
-        return "paper";
-    }
-    else if (computerPick == 3) {
-        return "scissors";
-    }
-}
-/* function to play single round using 2 inputs:  playerselection, computerselection
-returns string in format "You lose! Paper beats Rock"
-case insensitive */
+    );
 
-function playRound(playerSelect, computerSelect) {
-    console.log("You picked " + playerSelect + ". Computer picked " + computerSelect + "."); /* test line */
-
-    if (playerSelect == "rock") {
-        if (computerSelect == "rock") {
-            return "Tie game!";
+    /* randomly returns rock, paper, or scissors */
+    function computerPlay() {
+        let computerPick = Math.floor(Math.random() * 3) + 1;
+        if (computerPick == 1) {
+            return "rock";
         }
-        else if (computerSelect == "paper") {
-            return "You lose. " + capitalize(computerSelect) + " beats " + playerSelect + ".";
+        else if (computerPick == 2) {
+            return "paper";
         }
-        else if (computerSelect == "scissors") {
-            winCounter++;
-            return "You win! " + capitalize(playerSelect) + " beats " + computerSelect + ".";
-        }
-        
-    }
-    else if (playerSelect== "paper") {
-        if (computerSelect == "rock") {
-            winCounter++;
-            return "You win! "  + capitalize(playerSelect) + " beats " + computerSelect + ".";
-        }
-        else if (computerSelect == "paper") {
-            return "Tie game!";
-        }
-        else if (computerSelect == "scissors") {
-            return "You lose. "  + capitalize(computerSelect) + " beats " + playerSelect + ".";
+        else if (computerPick == 3) {
+            return "scissors";
         }
     }
-    else if (playerSelect=="scissors"){
-        if (computerSelect == "rock") {
-            return "You lose. "  + capitalize(computerSelect) + " beats " + playerSelect + ".";
+    /* function to play single round using 2 inputs:  playerselection, computerselection
+    returns string in format "You lose! Paper beats Rock"
+    case insensitive */
+
+    function playRound(playerSelect, computerSelect) {
+        console.log("You picked " + playerSelect + ". Computer picked " + computerSelect + "."); /* test line */
+
+        if (playerSelect == "rock") {
+            if (computerSelect == "rock") {
+                return "Tie game!";
+            }
+            else if (computerSelect == "paper") {
+                loseCounter++;
+                return "You lose. " + capitalize(computerSelect) + " beats " + playerSelect + ".";
+            }
+            else if (computerSelect == "scissors") {
+                winCounter++;
+                return "You win! " + capitalize(playerSelect) + " beats " + computerSelect + ".";
+            }
+
         }
-        else if (computerSelect == "paper") {
-            winCounter++;
-            return "You win! "  + capitalize(playerSelect) + " beats " + computerSelect + ".";
+        else if (playerSelect == "paper") {
+            if (computerSelect == "rock") {
+                winCounter++;
+                return "You win! " + capitalize(playerSelect) + " beats " + computerSelect + ".";
+            }
+            else if (computerSelect == "paper") {
+                return "Tie game!";
+            }
+            else if (computerSelect == "scissors") {
+                loseCounter++;
+                return "You lose. " + capitalize(computerSelect) + " beats " + playerSelect + ".";
+            }
         }
-        else if (computerSelect == "scissors") {
-            return "Tie game!";
+        else if (playerSelect == "scissors") {
+            if (computerSelect == "rock") {
+                loseCounter++;
+                return "You lose. " + capitalize(computerSelect) + " beats " + playerSelect + ".";
+            }
+            else if (computerSelect == "paper") {
+                winCounter++;
+                return "You win! " + capitalize(playerSelect) + " beats " + computerSelect + ".";
+            }
+            else if (computerSelect == "scissors") {
+                return "Tie game!";
+            }
         }
-    }
-    else {
-        return "Invalid option!";
-    }
-}
-
-
-/* function to capitalize first letter in a string */
-function capitalize(string) {
-    return string[0].toUpperCase()+ string.slice(1);
-}
-
-
-/*    var i = 0;
-    var txt = 'Choose your Pokémon!'; 
-    var speed = 100; 
-
-    function typeWriterTitle() {
-        if (i < txt.length) {
-            document.getElementById("demo").innerHTML += txt.charAt(i);
-            i++;
-            setTimeout(typeWriterTitle, speed);
+        else {
+            return "Invalid option!";
         }
     }
 
-    document.onload = typeWriterTitle();
-*/
+
+    /* function to capitalize first letter in a string */
+    function capitalize(string) {
+        return string[0].toUpperCase() + string.slice(1);
+    }
+
+
+    /*    var i = 0;
+        var txt = 'Choose your Pokémon!';
+        var speed = 100;
+    
+        function typeWriterTitle() {
+            if (i < txt.length) {
+                document.getElementById("demo").innerHTML += txt.charAt(i);
+                i++;
+                setTimeout(typeWriterTitle, speed);
+            }
+        }
+    
+        document.onload = typeWriterTitle();
+    */
 </script>
 
 </html>
