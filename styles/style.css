@@ -46,7 +46,7 @@ h1  {
     height:60%;
     width: 10%;
     padding:2rem;
-    background-color: rgba(255, 235, 205, 0.7);
+    background-color: rgb(255, 235, 205);
     text-align: center;
 }
 
@@ -96,7 +96,7 @@ h1  {
     display:flex;
     justify-content: space-between;
     width:40%;
-    background-color: rgba(255, 235, 205, 0.7);
+    background-color: rgb(255, 235, 205);
     padding:1rem 2rem;
     border-radius: 30px;
 }
