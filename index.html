@@ -32,12 +32,14 @@
 
 <script>
 const inputs = document.querySelectorAll('input');
+const text = document.querySelector('text');
 
 inputs.forEach((input) => {     //for each button, add event listeners
     input.addEventListener('click',()=>{
-        alert(input.id);
-        console.log(playRound(input.id, computerPlay()));
+    document.getElementById('text').textContent=(playRound(input.id, computerPlay()));
     })
+
+
     input.addEventListener('mouseover',()=>{
         input.src="images/pokeball_open.png"
     })
@@ -117,7 +119,6 @@ function playRound(playerSelect, computerSelect) {
         return "Invalid option!";
     }
 }
-
 
 
 /* function to capitalize first letter in a string */
