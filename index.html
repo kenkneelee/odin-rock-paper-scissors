@@ -25,7 +25,7 @@
         </div>
         <div class="scorecontainer">
         <h2 class="scoretext">Score:</h2>
-            <h2 class="score">0</h2>
+            <h2 id="score">0</h2>
         </div>
     </div>
 </body>
@@ -33,10 +33,13 @@
 <script>
 const inputs = document.querySelectorAll('input');
 const text = document.querySelector('text');
+const score = document.querySelector('score');
 
 inputs.forEach((input) => {     //for each button, add event listeners
     input.addEventListener('click',()=>{
     document.getElementById('text').textContent=(playRound(input.id, computerPlay()));
+    console.log(winCounter);
+    document.getElementById('score').textContent=winCounter;
     })
 
 
@@ -55,7 +58,6 @@ inputs.forEach((input) => {     //for each button, add event listeners
 let playerSelect;
 let computerSelect;
 let winCounter = 0;
-
 /* randomly returns rock, paper, or scissors */
 function computerPlay() {   
     let computerPick = Math.floor(Math.random() * 3) + 1;
@@ -74,9 +76,6 @@ returns string in format "You lose! Paper beats Rock"
 case insensitive */
 
 function playRound(playerSelect, computerSelect) {
-    //playerSelect = prompt("Rock, Paper, or Scissors?").toLowerCase(); /* ask user for their selection */
-    
-    //computerSelect = computerPlay();
     console.log("You picked " + playerSelect + ". Computer picked " + computerSelect + "."); /* test line */
 
     if (playerSelect == "rock") {
@@ -90,6 +89,7 @@ function playRound(playerSelect, computerSelect) {
             winCounter++;
             return "You win! " + capitalize(playerSelect) + " beats " + computerSelect + ".";
         }
+        
     }
     else if (playerSelect== "paper") {
         if (computerSelect == "rock") {
