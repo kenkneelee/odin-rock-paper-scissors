@@ -14,11 +14,11 @@
         <h1 id="demo">Choose your Pokémon!</h1>
         <div class="container">
             <div class="ballcontainer">
-                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball" id="torchic"
+                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball" id="rock"
                     >
-                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball" id="mudkip"
+                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball" id="paper"
                     >
-                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball" id="treecko"
+                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball" id="scissors"
                     >
             </div>
             <div id="text">Choose carefully! <br> ...</div>
@@ -33,9 +33,10 @@
 <script>
 const inputs = document.querySelectorAll('input');
 
-inputs.forEach((input) => {
+inputs.forEach((input) => {     //for each button, add event listeners
     input.addEventListener('click',()=>{
-        alert(input.id)
+        alert(input.id);
+        console.log(playRound(input.id, computerPlay()));
     })
     input.addEventListener('mouseover',()=>{
         input.src="images/pokeball_open.png"
@@ -49,12 +50,80 @@ inputs.forEach((input) => {
 
 
 
+let playerSelect;
+let computerSelect;
+let winCounter = 0;
+
+/* randomly returns rock, paper, or scissors */
+function computerPlay() {   
+    let computerPick = Math.floor(Math.random() * 3) + 1;
+    if (computerPick == 1) {
+        return "rock";
+    }
+    else if (computerPick == 2) {
+        return "paper";
+    }
+    else if (computerPick == 3) {
+        return "scissors";
+    }
+}
+/* function to play single round using 2 inputs:  playerselection, computerselection
+returns string in format "You lose! Paper beats Rock"
+case insensitive */
+
+function playRound(playerSelect, computerSelect) {
+    //playerSelect = prompt("Rock, Paper, or Scissors?").toLowerCase(); /* ask user for their selection */
+    
+    //computerSelect = computerPlay();
+    console.log("You picked " + playerSelect + ". Computer picked " + computerSelect + "."); /* test line */
+
+    if (playerSelect == "rock") {
+        if (computerSelect == "rock") {
+            return "Tie game!";
+        }
+        else if (computerSelect == "paper") {
+            return "You lose. " + capitalize(computerSelect) + " beats " + playerSelect + ".";
+        }
+        else if (computerSelect == "scissors") {
+            winCounter++;
+            return "You win! " + capitalize(playerSelect) + " beats " + computerSelect + ".";
+        }
+    }
+    else if (playerSelect== "paper") {
+        if (computerSelect == "rock") {
+            winCounter++;
+            return "You win! "  + capitalize(playerSelect) + " beats " + computerSelect + ".";
+        }
+        else if (computerSelect == "paper") {
+            return "Tie game!";
+        }
+        else if (computerSelect == "scissors") {
+            return "You lose. "  + capitalize(computerSelect) + " beats " + playerSelect + ".";
+        }
+    }
+    else if (playerSelect=="scissors"){
+        if (computerSelect == "rock") {
+            return "You lose. "  + capitalize(computerSelect) + " beats " + playerSelect + ".";
+        }
+        else if (computerSelect == "paper") {
+            winCounter++;
+            return "You win! "  + capitalize(playerSelect) + " beats " + computerSelect + ".";
+        }
+        else if (computerSelect == "scissors") {
+            return "Tie game!";
+        }
+    }
+    else {
+        return "Invalid option!";
+    }
+}
 
 
 
-
-
-
+/* function to capitalize first letter in a string */
+function capitalize(string) {
+    return string[0].toUpperCase()+ string.slice(1);
+}
 
 
 /*    var i = 0;
@@ -72,6 +141,5 @@ inputs.forEach((input) => {
     document.onload = typeWriterTitle();
 */
 </script>
-<!-- <script src="scripts/main.js"></script> -->
 
 </html>
