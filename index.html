@@ -70,11 +70,19 @@
 
 
             if (winCounter >= 5) {
-                document.getElementById('text').textContent = "You win the game!";
+                document.getElementById('text').textContent = "You win the game! Choose again to start a new game.";
+                winCounter=0;
+                loseCounter=0;
+                document.getElementById('score').textContent = winCounter;
+                document.getElementById('aiscore').textContent = loseCounter;
             }
 
             if (loseCounter >= 5) {
-                document.getElementById('text').textContent = "You lose the game.";
+                document.getElementById('text').textContent = "You lose the game. Choose again to start a new game.";
+                winCounter=0;
+                loseCounter=0;
+                document.getElementById('score').textContent = winCounter;
+                document.getElementById('aiscore').textContent = loseCounter;
             }
         })
 
