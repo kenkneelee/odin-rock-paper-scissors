@@ -13,6 +13,13 @@
     <div class="main">
         <h1 id="demo">Choose your Pokémon!</h1>
 
+        <div class="middle">
+
+        <div class="yourchoice choicebox">
+            <img src="images/pokeball_closed.png" alt="your choice" id="choicepic">
+            <p id="yourchoicetext">Your choice</p>
+
+        </div>
 
         <div class="container">
             <div class="ballcontainer">
@@ -23,9 +30,15 @@
                 <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball"
                     id="scissors">
             </div>
-            <div id="text">Choose carefully! <br> ...</div>
+            <div id="text">Choose carefully! ...</div>
         </div>
 
+        <div class="aichoice choicebox">
+            <img src="images/pokeball_closed.png" alt="ai choice" id="aichoicepic">
+            <p id="aichoicetext">AI Choice</p>
+        </div>
+
+        </div>
 
         <div class="scorecontainer">
             <h2 class="scoretext">Score:</h2>
@@ -33,7 +46,7 @@
             <h2 class="aiscoretext">AI Score:</h2>
             <h2 id="aiscore">0</h2>
         </div>
-        
+
     </div>
 </body>
 
@@ -41,6 +54,7 @@
     const inputs = document.querySelectorAll('input');
     const text = document.querySelector('text');
     const score = document.querySelector('score');
+
 
     let playerSelect;
     let computerSelect;
