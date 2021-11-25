@@ -11,28 +11,55 @@
 
 <body>
     <div class="main">
-        <h1 id="demo"></h1>
+        <h1 id="demo">Choose your Pokémon!</h1>
         <div class="container">
             <div class="ballcontainer">
-                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball"
-                    onclick="alert(1)">
-                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball"
-                    onclick="alert(2)">
-                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball"
-                    onclick="alert(3)">
+                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball" id="torchic"
+                    >
+                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball" id="mudkip"
+                    >
+                <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball" id="treecko"
+                    >
             </div>
-            <div id="text"></div>
+            <div id="text">Choose carefully! <br> ...</div>
         </div>
-        <h2 class="score">Score:</h2>
+        <div class="scorecontainer">
+        <h2 class="scoretext">Score:</h2>
+            <div class="score">1</div>
+        </div>
     </div>
 </body>
 
 <script>
-    var i = 0;
-    var j = 0;
-    var txt = 'Choose your Pokémon!'; /* The text */
-    var speed = 100; /* The speed/duration of the effect in milliseconds */
-    var chooseTxt = 'Choose carefully! ...';
+const inputs = document.querySelectorAll('input');
+
+inputs.forEach((input) => {
+    input.addEventListener('click',()=>{
+        alert(input.id)
+    })
+    input.addEventListener('mouseover',()=>{
+        input.src="images/pokeball_open.png"
+    })
+    input.addEventListener('mouseout',()=>{
+        input.src="images/pokeball_closed.png"
+    })
+    ;
+}
+);
+
+
+
+
+
+
+
+
+
+
+
+/*    var i = 0;
+    var txt = 'Choose your Pokémon!'; 
+    var speed = 100; 
 
     function typeWriterTitle() {
         if (i < txt.length) {
@@ -42,16 +69,8 @@
         }
     }
 
-    function typeWriterChoose() {
-        if (j < chooseTxt.length) {
-            document.getElementById("text").innerHTML += chooseTxt.charAt(j);
-            j++;
-            setTimeout(typeWriterChoose, speed);
-        }
-    }
     document.onload = typeWriterTitle();
-    document.onload = typeWriterChoose();
-
+*/
 </script>
 <!-- <script src="scripts/main.js"></script> -->
 
