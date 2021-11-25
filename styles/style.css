@@ -43,10 +43,11 @@ h1  {
     flex-direction: column;
     justify-content: space-between;
     border-radius: 20px;
-    height:50%;
-    width: auto;
+    height:60%;
+    width: 10%;
     padding:2rem;
     background-color: blanchedalmond;
+    text-align: center;
 }
 
 .container {

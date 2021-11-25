@@ -18,17 +18,18 @@
         <div class="yourchoice choicebox">
             <img src="images/pokeball_closed.png" alt="your choice" id="choicepic">
             <p id="yourchoicetext">Your choice</p>
+            <p id="choiceshow"></p>
 
         </div>
 
         <div class="container">
             <div class="ballcontainer">
                 <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball"
-                    id="rock">
+                    id="torchic">
                 <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball"
-                    id="paper">
+                    id="mudkip">
                 <input type="image" src="images/pokeball_closed.png" class="closedball" alt="pixelated pokeball"
-                    id="scissors">
+                    id="treecko">
             </div>
             <div id="text">Choose carefully! ...</div>
         </div>
@@ -36,6 +37,7 @@
         <div class="aichoice choicebox">
             <img src="images/pokeball_closed.png" alt="ai choice" id="aichoicepic">
             <p id="aichoicetext">AI Choice</p>
+            <p id="aichoiceshow"></p>
         </div>
 
         </div>
@@ -89,85 +91,85 @@
 
         input.addEventListener('mouseover', () => {
             input.src = "images/pokeball_open.png"
-            if (input.id=="rock") {
-            document.getElementById('choicepic').src = "images/rock.png";
+            if (input.id=="torchic") {
+            document.getElementById('choicepic').src = "images/torchic.png";
             }
-            else if (input.id=="paper") {
-                document.getElementById('choicepic').src = "images/paper.png";
+            else if (input.id=="mudkip") {
+                document.getElementById('choicepic').src = "images/mudkip.png";
             }
-            else if (input.id=="scissors") {
-                document.getElementById('choicepic').src = "images/scissors.png";
+            else if (input.id=="treecko") {
+                document.getElementById('choicepic').src = "images/treecko.png";
             }
         })
         input.addEventListener('mouseout', () => {
             input.src = "images/pokeball_closed.png"
 
-        })
-            ;
+        });
     }
     );
 
-    /* randomly returns rock, paper, or scissors */
+    /* randomly returns torchic, mudkip, or treecko */
     function computerPlay() {
         let computerPick = Math.floor(Math.random() * 3) + 1;
         if (computerPick == 1) {
-            return "rock";
+            return "torchic";
         }
         else if (computerPick == 2) {
-            return "paper";
+            return "mudkip";
         }
         else if (computerPick == 3) {
-            return "scissors";
+            return "treecko";
         }
     }
     /* function to play single round using 2 inputs:  playerselection, computerselection
-    returns string in format "You lose! Paper beats Rock"
+    returns string in format "You lose! mudkip beats torchic"
     case insensitive */
 
     function playRound(playerSelect, computerSelect) {
         console.log("You picked " + playerSelect + ". Computer picked " + computerSelect + "."); /* test line */
         document.getElementById('aichoicepic').src = "images/" + computerSelect + ".png";
         document.getElementById('choicepic').src = "images/" + playerSelect + ".png";
+        document.getElementById('aichoiceshow').textContent = capitalize(computerSelect);
+        document.getElementById('choiceshow').textContent = capitalize(playerSelect);
 
-
-        if (playerSelect == "rock") {
-            if (computerSelect == "rock") {
-                return "Tie game! You both chose " + playerSelect + ".";
+        if (playerSelect == "torchic") {
+            if (computerSelect == "torchic") {
+                return "Tie game! You both chose " + capitalize(playerSelect) + ".";
             }
-            else if (computerSelect == "paper") {
+            else if (computerSelect == "mudkip") {
                 loseCounter++;
-                return "You lose. " + capitalize(computerSelect) + " beats " + playerSelect + ".";
+                return "You lose. " + capitalize(computerSelect) + " beats " + capitalize(playerSelect) + ".";
             }
-            else if (computerSelect == "scissors") {
+            else if (computerSelect == "treecko") {
                 winCounter++;
-                return "You win! " + capitalize(playerSelect) + " beats " + computerSelect + ".";
+                return "You win! " + capitalize(playerSelect) + " beats " + capitalize(computerSelect) + ".";
             }
 
         }
-        else if (playerSelect == "paper") {
-            if (computerSelect == "rock") {
+        else if (playerSelect == "mudkip") {
+            if (computerSelect == "torchic") {
                 winCounter++;
-                return "You win! " + capitalize(playerSelect) + " beats " + computerSelect + ".";
+                return "You win! " + capitalize(playerSelect) + " beats " + capitalize(computerSelect) + ".";
             }
-            else if (computerSelect == "paper") {
-                return "Tie game! You both chose " + playerSelect + ".";
+            else if (computerSelect == "mudkip") {
+                return "Tie game! You both chose " + capitalize(playerSelect) + ".";
             }
-            else if (computerSelect == "scissors") {
+            else if (computerSelect == "treecko") {
                 loseCounter++;
-                return "You lose. " + capitalize(computerSelect) + " beats " + playerSelect + ".";
+                return "You lose. " + capitalize(computerSelect) + " beats " + capitalize(playerSelect) + ".";
             }
         }
-        else if (playerSelect == "scissors") {
-            if (computerSelect == "rock") {
+        else if (playerSelect == "treecko") {
+            if (computerSelect == "torchic") {
                 loseCounter++;
-                return "You lose. " + capitalize(computerSelect) + " beats " + playerSelect + ".";
+                return "You lose. " + capitalize(computerSelect) + " beats " + capitalize(playerSelect) + ".";
             }
-            else if (computerSelect == "paper") {
+            else if (computerSelect == "mudkip") {
                 winCounter++;
-                return "You win! " + capitalize(playerSelect) + " beats " + computerSelect + ".";
+                return "You win! " + capitalize(playerSelect) + " beats " + capitalize(computerSelect) + ".";
             }
-            else if (computerSelect == "scissors") {
-                return "Tie game! You both chose " + playerSelect + ".";
+            else if (computerSelect == "treecko") {
+                return "Tie game! You both chose " + capitalize(playerSelect) + ".";
             }
         }
         else {
