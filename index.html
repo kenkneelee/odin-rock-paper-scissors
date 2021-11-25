@@ -119,7 +119,7 @@
 
         if (playerSelect == "rock") {
             if (computerSelect == "rock") {
-                return "Tie game!";
+                return "Tie game! You both chose " + playerSelect + ".";
             }
             else if (computerSelect == "paper") {
                 loseCounter++;
@@ -137,7 +137,7 @@
                 return "You win! " + capitalize(playerSelect) + " beats " + computerSelect + ".";
             }
             else if (computerSelect == "paper") {
-                return "Tie game!";
+                return "Tie game! You both chose " + playerSelect + ".";
             }
             else if (computerSelect == "scissors") {
                 loseCounter++;
@@ -154,7 +154,7 @@
                 return "You win! " + capitalize(playerSelect) + " beats " + computerSelect + ".";
             }
             else if (computerSelect == "scissors") {
-                return "Tie game!";
+                return "Tie game! You both chose " + playerSelect + ".";
             }
         }
         else {
